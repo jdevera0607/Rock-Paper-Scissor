@@ -1,54 +1,28 @@
-const choice = ["rock", "paper", "scissor"];
+choice = ['rock', 'paper', 'scissor'];
 
 function getComputerChoice(){
- 
-    const randomChoice = choice[Math.floor(Math.random() * choice.length)];
-    return randomChoice;
-}    
-playRound();
-
-function playRound(){
-    const computerSelection = getComputerChoice();
-    const playerSelection = getHumanChoice();
-    checkWinner(computerSelection, playerSelection);
+    computerChoice = choice[Math.floor(Math.random()*choice.length)];
+    return computerChoice;
 }
-
-function checkWinner(computerSelection, playerSelection){
-    let result = "";
-   if (playerSelection == computerSelection){
-       
-        result = "draw";
-        playerScore(result);
-    }
-    else if(playerSelection == "rock" && computerSelection == "scissor" ||
-        playerSelection == "scissor" && computerSelection == "paper" ||
-        playerSelection == "paper" && computerSelection == "rock"){
-
-        result = "player";
-        playerScore(result);
-    } 
-    else{
-
-        result = "computer";
-        playerScore(result);
-    }
-    
+function getPlayerChoice(input){
+  const inputButton = input;
+  checkWinner(inputButton);
 }
+function checkWinner(inputButton){
+const playerSelection = inputButton;
+const computerSelection = getComputerChoice();
 
-function getHumanChoice(){
-    let playerInput = prompt("Rock, Paper or Scissor?");
-    playerInput = playerInput.toLowerCase();
-    return playerInput;
+  if(playerSelection == computerSelection){
+    alert('draw');
+  }
+  else if(playerSelection == "rock" && computerSelection == "scissor" ||
+    playerSelection == "scissor" && computerSelection == "paper" ||
+    playerSelection == "paper" && computerSelection == "rock"){
+
+    alert('player wins!',playerSelection,' beats',computerSelection);
+} 
+else{
+
+    alert('computer wins!',computerSelection,' beats',playerSelection);
 }
-
-function playerScore(result){
-    let humanScore = 0;
-    let computerScore = 0;
-    if(result == "player"){
-        console.log(result);
-    }
-    
 }
-
-
-
